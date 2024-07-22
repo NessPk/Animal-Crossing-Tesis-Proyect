@@ -1,0 +1,38 @@
+<div *ngIf="villagers.length > 0">
+  <div class="Absolute-container">
+    <div class= Title-div>
+      <h2 class="Villager-title">Villagers</h2>
+    </div>
+    <div class="button-container-top">
+      <button class="btn-prev">Prev</button>
+      <div class="search-container">
+      <input type="text" [(ngModel)]="searchQuery" placeholder='search villager' (keyup)="handleSearchInput()">
+      <button class="btn-search" (click)="filterVillagers()">Search</button>
+    </div>
+      <button class="btn-next">Next</button>
+    </div>
+
+    <div class="content-container">
+      <ul class="villager-list">
+        <li *ngFor="let villager of villagers" class="villager-item">
+          <div class="villager-container">
+            <span class="villager-name">{{ villager.name }}</span>
+            <img [src]="villager.image_url" alt="{{ villager.name }}" class="villager-image">
+            <span class="villager-personality">{{ villager.personality }}</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="button-container-bottom">
+      <button class="btn-prev">Prev</button>
+      <button class="btn-next">Next</button>
+    </div>
+
+    <div class="suggestions">
+      <span *ngFor="let villager of filteredVillagers">
+        {{ villager.name }}
+      </span>
+    </div>
+  </div>
+</div>
